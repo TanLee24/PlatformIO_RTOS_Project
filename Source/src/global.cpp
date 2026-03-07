@@ -14,3 +14,6 @@ String wifi_ssid = "abcde";
 String wifi_password = "123456789";
 boolean isWifiConnected = false;
 SemaphoreHandle_t xBinarySemaphoreInternet = xSemaphoreCreateBinary();
+
+// Initialize queue with length 1 (Mailbox style) to store the latest soil moisture value
+QueueHandle_t xQueueSoilMoisture = xQueueCreate(1, sizeof(int));
