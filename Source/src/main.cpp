@@ -5,6 +5,9 @@
 #include "light_led.h"
 #include "soilMoisture_relay.h"
 #include "temp_humi_monitor.h"
+#include "button_led.h"
+#include "led_button.h"
+
 #include "mainserver.h"
 // #include "tinyml.h"
 #include "coreiot.h"
@@ -23,9 +26,11 @@ void setup()
 
   xTaskCreate(led_blinky, "Task LED Blink", 4096, NULL, 2, NULL);
   xTaskCreate(neo_blinky, "Task NEO Blink", 4096, NULL, 2, NULL);
-  xTaskCreate(lightAffectsLed, "Light Affects LED", 4096, NULL, 2, NULL);
-  xTaskCreate(soilMoistureAffectsPump, "Soil Moisture Affects Pump", 4096, NULL, 2, NULL);
-  xTaskCreate(temp_humi_monitor, "Task TEMP HUMI Monitor", 4096, NULL, 2, NULL);
+  // xTaskCreate(lightAffectsLed, "Light Affects LED", 4096, NULL, 2, NULL);
+  // xTaskCreate(soilMoistureAffectsPump, "Soil Moisture Affects Pump", 4096, NULL, 2, NULL);
+  // xTaskCreate(temp_humi_monitor, "Task TEMP HUMI Monitor", 4096, NULL, 2, NULL);
+  xTaskCreate(doubleButton, "Task Press The Double Button", 4096, NULL, 2, NULL);
+  xTaskCreate(ledBasedOnButton, "Led Blink Based on Button", 4096, NULL, 2, NULL);
   // xTaskCreate(main_server_task, "Task Main Server" ,8192  ,NULL  ,2 , NULL);
   // xTaskCreate( tiny_ml_task, "Tiny ML Task" ,2048  ,NULL  ,2 , NULL);
   // xTaskCreate(coreiot_task, "CoreIOT Task", 4096, NULL, 2, NULL);
