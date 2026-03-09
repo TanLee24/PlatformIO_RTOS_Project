@@ -6,6 +6,7 @@
 #include "DHT20.h"
 #include "global.h"
 
+// Task to Read Temperature and Humidity via DHT20 and Dislay on LCD
 void temp_humi_monitor(void *pvParameters);
 
 #endif

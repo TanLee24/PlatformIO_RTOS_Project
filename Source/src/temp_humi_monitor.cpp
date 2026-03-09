@@ -75,7 +75,7 @@ void temp_humi_monitor(void *pvParameters)
         {
             lcd.printf("Val:%d (OK)", currentSoilValue);
         }
-        // Hold Page 2 for 3 seconds
-        vTaskDelay(3000);
+        
+        vTaskDelay(3000); // Hold Page 2 for 3 seconds
     }
 }

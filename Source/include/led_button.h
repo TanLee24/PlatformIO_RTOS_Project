@@ -8,6 +8,7 @@
 #define LED_OFF 0
 #define LED_BLINK 1
 
+// Task blinking the Single LED based on the Button pressed
 void ledBasedOnButton(void *pvParameters);
 
 #endif
