@@ -6,8 +6,8 @@
 #include "global.h"
 #include <PubSubClient.h>
 #include <ArduinoJson.h>
-#include "led_blinky.h"
 
+#define LED_GPIO 48
 // void callback(char* topic, byte* payload, unsigned int length);
 void coreiot_task(void *pvParameters);
 

@@ -26,7 +26,7 @@ void setup()
   Serial.begin(115200);
   // check_info_File(0);
 
-  xTaskCreate(led_blinky, "Task LED Blink", 4096, NULL, 2, NULL);
+  // xTaskCreate(led_blinky, "Task LED Blink", 4096, NULL, 2, NULL);
   // xTaskCreate(neo_blinky, "Task NEO Blink", 4096, NULL, 2, NULL);
   // xTaskCreate(lightAffectsLed, "Light Affects LED", 4096, NULL, 2, NULL);
   // xTaskCreate(soilMoistureAffectsPump, "Soil Moisture Affects Pump", 4096, NULL, 2, NULL);
