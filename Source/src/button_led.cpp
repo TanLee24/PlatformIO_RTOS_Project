@@ -9,7 +9,7 @@ void doubleButton(void *pvParameters)
     bool lastState1 = HIGH;
     bool lastState2 = HIGH;
 
-    while (true)
+    while (1)
     {
         bool currState1 = digitalRead(BUTTON1_PIN);
         bool currState2 = digitalRead(BUTTON2_PIN);

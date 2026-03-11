@@ -45,3 +45,20 @@ bool Wifi_reconnect()
     startSTA();
     return false;
 }
+
+void WiFi_Manager(void *pvParameters) 
+{
+    // Hard code
+    WIFI_SSID = "BuiThiNgocKieu";   
+    WIFI_PASS = "15051971";      
+
+    Serial.println("Connecting to Wi-Fi...");
+    
+    startSTA();
+
+    while (1)
+    {
+        Wifi_reconnect();
+        vTaskDelay(5000);
+    }
+}

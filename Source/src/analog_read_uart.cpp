@@ -54,7 +54,7 @@ void AnalogRead_UART(void *pvParameters)
     char send_buffer[50];
     uint8_t receive_buffer[50];
     
-    for (;;) 
+    while (1) 
     {
         // --- PART 1: READ ADC AND SEND VIA UART API ---
         int adcValue = analogRead(SENSOR_PIN);

@@ -8,4 +8,7 @@
 extern bool Wifi_reconnect();
 extern void startAP();
 
+// Connect to a Local Wi-Fi
+void WiFi_Manager(void *pvParameters);
+
 #endif
