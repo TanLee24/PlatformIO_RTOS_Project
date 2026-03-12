@@ -10,20 +10,20 @@ void startAP()
 
 void startSTA()
 {
-    if (WIFI_SSID.isEmpty())
+    if (STA_SSID.isEmpty())
     {
         vTaskDelete(NULL);
     }
 
     WiFi.mode(WIFI_STA);
 
-    if (WIFI_PASS.isEmpty())
+    if (STA_PASS.isEmpty())
     {
-        WiFi.begin(WIFI_SSID.c_str());
+        WiFi.begin(STA_SSID.c_str());
     }
     else
     {
-        WiFi.begin(WIFI_SSID.c_str(), WIFI_PASS.c_str());
+        WiFi.begin(STA_SSID.c_str(), STA_PASS.c_str());
     }
 
     while (WiFi.status() != WL_CONNECTED)
@@ -48,10 +48,6 @@ bool Wifi_reconnect()
 
 void WiFi_Manager(void *pvParameters) 
 {
-    // Hard code
-    WIFI_SSID = "BuiThiNgocKieu";   
-    WIFI_PASS = "15051971";      
-
     Serial.println("Connecting to Wi-Fi...");
     
     startSTA();

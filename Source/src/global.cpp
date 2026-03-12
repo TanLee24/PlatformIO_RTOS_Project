@@ -2,14 +2,21 @@
 float glob_temperature = 0;
 float glob_humidity = 0;
 
-String WIFI_SSID;
-String WIFI_PASS;
+// AP Mode Username and Password
+String AP_SSID;
+String AP_PASS;
+// STA Mode Username and Password
+String STA_SSID = "BuiThiNgocKieu";
+String STA_PASS = "15051971";
+
 String CORE_IOT_TOKEN;
 String CORE_IOT_SERVER;
 String CORE_IOT_PORT;
 
+// AP Mode
 String ssid = "ESP32-YOUR NETWORK HERE!!!";
 String password = "12345678";
+//STA Mode
 String wifi_ssid = "abcde";
 String wifi_password = "123456789";
 boolean isWifiConnected = false;

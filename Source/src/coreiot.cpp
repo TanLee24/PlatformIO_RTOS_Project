@@ -108,6 +108,9 @@ void coreiot_task(void *pvParameters)
   pinMode(LED_GPIO, OUTPUT);
   digitalWrite(LED_GPIO, LOW);
 
+  String latitude = "10.790201567988808";
+  String longitude = "106.75724545406152";
+
   setup_coreiot();
   
   while(1)
@@ -119,7 +122,9 @@ void coreiot_task(void *pvParameters)
     client.loop();
     // Sample payload, publish to 'v1/devices/me/telemetry'
     String payload = "{\"temperature\":" + String(glob_temperature) +  
-                      ",\"humidity\":" + String(glob_humidity) + "}";
+                      ",\"humidity\":" + String(glob_humidity) + 
+                      ",\"longitude\":" + longitude +
+                      ",\"latitude\":" + latitude + "}";
     
     client.publish("v1/devices/me/telemetry", payload.c_str());
     
