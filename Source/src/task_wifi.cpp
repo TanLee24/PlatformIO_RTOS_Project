@@ -3,7 +3,7 @@
 void startAP()
 {
     WiFi.mode(WIFI_AP);
-    WiFi.softAP(String(SSID_AP), String(PASS_AP));
+    WiFi.softAP(String(AP_SSID), String(AP_PASS));
     Serial.print("AP IP: ");
     Serial.println(WiFi.softAPIP());
 }
@@ -30,6 +30,7 @@ void startSTA()
     {
         vTaskDelay(100 / portTICK_PERIOD_MS);
     }
+    Serial.println("Your Wi-Fi IP address: ");
     Serial.println(WiFi.localIP());
     //Give a semaphore here
     xSemaphoreGive(xBinarySemaphoreInternet);
@@ -46,11 +47,12 @@ bool Wifi_reconnect()
     return false;
 }
 
-void WiFi_Manager(void *pvParameters) 
+void wifiConnect(void *pvParameters) 
 {
     Serial.println("Connecting to Wi-Fi...");
     
-    startSTA();
+    // startSTA();
+    // startAP();
 
     while (1)
     {

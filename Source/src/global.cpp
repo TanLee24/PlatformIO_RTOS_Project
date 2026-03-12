@@ -3,8 +3,8 @@ float glob_temperature = 0;
 float glob_humidity = 0;
 
 // AP Mode Username and Password
-String AP_SSID;
-String AP_PASS;
+String AP_SSID = "ESP32-S3 Local";
+String AP_PASS = "12345678";
 // STA Mode Username and Password
 String STA_SSID = "BuiThiNgocKieu";
 String STA_PASS = "15051971";

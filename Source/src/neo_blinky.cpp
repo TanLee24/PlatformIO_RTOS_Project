@@ -3,7 +3,6 @@
 
 void neo_blinky(void *pvParameters)
 {
-
     Adafruit_NeoPixel strip(LED_COUNT, NEO_PIN, NEO_GRB + NEO_KHZ800);
     strip.begin();
     // Set all pixels to off to start
@@ -11,8 +10,8 @@ void neo_blinky(void *pvParameters)
     strip.show();
 
     while(1) 
-    {                          
-        strip.setPixelColor(0, strip.Color(20, 172, 99)); // Some random colors...
+    {
+        strip.setPixelColor(0, strip.Color(20, 72, 41)); // Some random colors...
         strip.show(); // Update the strip
 
         vTaskDelay(2000);
