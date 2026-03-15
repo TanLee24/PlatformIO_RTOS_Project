@@ -1,6 +1,8 @@
 #include "global.h"
+
 float glob_temperature = 0;
 float glob_humidity = 0;
+int glob_ml_state = 0;
 
 // AP Mode Username and Password
 String AP_SSID = "ESP32-S3 Local";

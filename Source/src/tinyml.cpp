@@ -8,7 +8,7 @@ namespace
     tflite::MicroInterpreter *interpreter = nullptr;
     TfLiteTensor *input = nullptr;
     TfLiteTensor *output = nullptr;
-    constexpr int kTensorArenaSize = 8 * 1024; // Adjust size based on your model
+    constexpr int kTensorArenaSize = 4 * 1024; // Adjust size based on your model
     uint8_t tensor_arena[kTensorArenaSize];
 } // namespace
 
@@ -44,31 +44,43 @@ void setupTinyML()
     Serial.println("TensorFlow Lite Micro initialized on ESP32.");
 }
 
-void tiny_ml_task(void *pvParameters)
+void tinyML(void *pvParameters)
 {
-
     setupTinyML();
 
     while (1)
     {
-
         // Prepare input data (e.g., sensor readings)
-        // For a simple example, let's assume a single float input
-        input->data.f[0] = glob_temperature;
-        input->data.f[1] = glob_humidity;
+        float t = glob_temperature;
+        float h = glob_humidity;
+
+        input->data.f[0] = t;
+        input->data.f[1] = h;
 
         // Run inference
         TfLiteStatus invoke_status = interpreter->Invoke();
         if (invoke_status != kTfLiteOk)
         {
             error_reporter->Report("Invoke failed");
+            vTaskDelay(pdMS_TO_TICKS(5000));
             return;
         }
 
         // Get and process output
         float result = output->data.f[0];
-        Serial.print("Inference result: ");
-        Serial.println(result);
+        Serial.println("\n===== TINYML PREDICTION =====");
+        Serial.printf("Input: Temp = %.1f°C | Hum = %.1f%%\n", t, h);
+
+        if (result >= 0.5) {
+            // Gần 1.0 tức là Nhãn 1 (Bất thường)
+            Serial.printf("AI OUTPUT: BẤT THƯỜNG (Confidence: %.1f%%)\n", result * 100);
+            glob_ml_state = 1;
+        } else {
+            // Gần 0.0 tức là Nhãn 0 (Bình thường)
+            Serial.printf("AI OUTPUT: BÌNH THƯỜNG (Confidence: %.1f%%)\n", (1.0 - result) * 100);
+            glob_ml_state = 0;
+        }
+        Serial.println("================================");
 
         vTaskDelay(5000);
     }

@@ -77,6 +77,12 @@ String mainPage() {
       .sensor-value { font-size: 32px; font-weight: 800; color: #ef4444; }
       .sensor-value.hum { color: #3b82f6; }
       
+      /* AI Status Box */
+      .ai-box { padding: 15px; border-radius: 16px; font-size: 24px; font-weight: 800; transition: all 0.3s; background: #f4f4f5; color: #a1a1aa;}
+      .ai-normal { background: #dcfce7; color: #166534; box-shadow: 0 4px 15px rgba(22, 101, 52, 0.2); }
+      .ai-abnormal { background: #fee2e2; color: #991b1b; box-shadow: 0 4px 15px rgba(153, 27, 27, 0.2); animation: pulse 1.5s infinite; }
+      @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
+
       /* Segmented Controls (Buttons) */
       .segment-control { display: flex; background: #f4f4f5; border-radius: 14px; padding: 4px; margin-bottom: 20px; }
       .segment-control button { flex: 1; border: none; background: transparent; padding: 10px 0; font-size: 14px; font-weight: 600; color: #71717a; border-radius: 10px; cursor: pointer; transition: all 0.2s ease; outline: none; }
@@ -112,6 +118,11 @@ String mainPage() {
           <h3 class="card-title">💧 Humidity</h3>
           <div class="sensor-value hum" id="humValue">-- %</div>
         </div>
+      </div>
+
+      <div class="card" style="text-align: center;">
+        <h3 class="card-title">🧠 AI Anomaly Detection</h3>
+        <div class="ai-box" id="aiStatus">Loading Model...</div>
       </div>
 
       <div class="grid-2">
@@ -184,6 +195,16 @@ String mainPage() {
             modeEl.innerText = json.mode;
             modeEl.className = json.mode === "AP Only" ? "text-ap" : "text-sta";
             document.getElementById('wifiSSID').innerText = json.ssid;
+
+            // Xử lý hiển thị AI
+            let aiEl = document.getElementById('aiStatus');
+            if(json.ml === "NORMAL") {
+                aiEl.innerText = "✅ NORMAL ENVIRONMENT";
+                aiEl.className = "ai-box ai-normal";
+            } else if (json.ml === "ABNORMAL") {
+                aiEl.innerText = "🚨 ABNORMAL DETECTED!";
+                aiEl.className = "ai-box ai-abnormal";
+            }
           });
       }
       updateData();
@@ -240,10 +261,15 @@ void handleData() {
   String modeStr = isAPMode ? "AP Only" : "AP + STA";
   String networkStr = isAPMode ? "Not Connected" : sta_ssid;
   
+  // Lấy dữ liệu từ AI
+  String mlStr = (glob_ml_state == 1) ? "ABNORMAL" : "NORMAL";
+  
+  // Đóng gói JSON
   String json = "{\"temp\":\"" + String(glob_temperature, 1) + 
                 "\",\"hum\":\"" + String(glob_humidity, 1) + 
                 "\",\"mode\":\"" + modeStr + 
-                "\",\"ssid\":\"" + networkStr + "\"}";
+                "\",\"ssid\":\"" + networkStr + 
+                "\",\"ml\":\"" + mlStr + "\"}"; // Bổ sung trường "ml"
   server.send(200, "application/json", json);
 }
 

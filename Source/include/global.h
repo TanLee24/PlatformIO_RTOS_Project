@@ -8,6 +8,7 @@
 
 extern float glob_temperature;
 extern float glob_humidity;
+extern int glob_ml_state; // For tinyML
 
 extern String AP_SSID;
 extern String AP_PASS;
