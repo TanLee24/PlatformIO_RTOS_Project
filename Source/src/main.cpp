@@ -20,14 +20,14 @@ void setup()
 
   // xTaskCreate(led_blinky, "Task LED Blinky", 4096, NULL, 2, NULL);
   // xTaskCreate(neo_blinky, "Task NEO Blinky", 4096, NULL, 2, NULL);
-  xTaskCreate(lightAffectsLed, "Task Light Affects LED", 4096, NULL, 2, NULL);
-  xTaskCreate(soilMoistureAffectsPump, "Task Soil Moisture Affects Pump", 4096, NULL, 2, NULL);
+  // xTaskCreate(lightAffectsLed, "Task Light Affects LED", 4096, NULL, 2, NULL);
+  // xTaskCreate(soilMoistureAffectsPump, "Task Soil Moisture Affects Pump", 4096, NULL, 2, NULL);
   xTaskCreate(temp_humi_monitor, "Task TEMP HUMI Monitor", 4096, NULL, 2, NULL);
-  xTaskCreate(doubleButton, "Task Press The Double Button", 4096, NULL, 2, NULL);
-  xTaskCreate(ledBasedOnButton, "Task Led Blinky Based on Button", 4096, NULL, 2, NULL);
-  xTaskCreate(wifiConnect, "Task Connect Wi-Fi", 4096, NULL, 2, NULL);
-  xTaskCreate(coreiot_task, "Task CoreIOT", 4096, NULL, 2, NULL);
-  // xTaskCreate(main_server, "Task Web Server", 8192 , NULL, 2, NULL);
+  // xTaskCreate(doubleButton, "Task Press The Double Button", 4096, NULL, 2, NULL);
+  // xTaskCreate(ledBasedOnButton, "Task Led Blinky Based on Button", 4096, NULL, 2, NULL);
+  // xTaskCreate(wifiConnect, "Task Connect Wi-Fi", 4096, NULL, 2, NULL);
+  // xTaskCreate(coreiot_task, "Task CoreIOT", 4096, NULL, 2, NULL);
+  xTaskCreate(main_server, "Task Web Server", 8192 , NULL, 2, NULL);
   xTaskCreate(tinyML, "Task Tiny ML", 4096, NULL, 2, NULL);
   // xTaskCreate(AnalogRead_UART, "Task Read Analog and Print UART", 4096, NULL, 2, NULL);
   // xTaskCreate(powerOptimization, "Task Power Optimization", 4096, NULL, 2, NULL);
