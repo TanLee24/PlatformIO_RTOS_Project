@@ -4,8 +4,8 @@
 #include <Arduino.h>
 #include <Adafruit_NeoPixel.h>
 
-#define LIGHT_SENSOR_PIN GPIO_NUM_1
-#define FOUR_LED_PIN GPIO_NUM_6
+#define LIGHT_SENSOR_PIN GPIO_NUM_1 // A0
+#define FOUR_LED_PIN GPIO_NUM_6 // D3
 
 extern Adafruit_NeoPixel pixels3;
 

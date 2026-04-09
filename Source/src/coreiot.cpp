@@ -108,8 +108,13 @@ void coreiot_task(void *pvParameters)
   pinMode(LED_GPIO, OUTPUT);
   digitalWrite(LED_GPIO, LOW);
 
-  String latitude = "10.790201567988808";
-  String longitude = "106.75724545406152";
+  // Home
+  // String latitude = "10.790201567988808";
+  // String longitude = "106.75724545406152";
+
+  // BK CS1
+  String latitude = "10.772391155216926";
+  String longitude = "106.65788031863018";
 
   setup_coreiot();
   

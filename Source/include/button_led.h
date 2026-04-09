@@ -4,8 +4,8 @@
 #include "global.h"
 #include <Arduino.h>
 
-#define BUTTON1_PIN GPIO_NUM_8 // D5
-#define BUTTON2_PIN GPIO_NUM_9 // D6
+#define BUTTON1_PIN GPIO_NUM_10 // D7
+#define BUTTON2_PIN GPIO_NUM_17 // D8
 
 // Task pressing the Double button to config the status of the Single LED
 void doubleButton(void *pvParameters);

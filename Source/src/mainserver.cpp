@@ -55,7 +55,7 @@ String mainPage() {
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ESP32 Smart Home</title>
+    <title>ESP32 Web Server</title>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
       body { font-family: 'Inter', sans-serif; background: #f4f7f6; color: #1d1d1f; margin: 0; padding: 20px; display: flex; justify-content: center; }
@@ -100,7 +100,7 @@ String mainPage() {
   </head>
   <body>
     <div class="dashboard">
-      <h2>🏠 SMART HOME DASHBOARD</h2>
+      <h2>🏠 ESP32-S3 DASHBOARD</h2>
       
       <div class="card">
         <div class="grid-2">

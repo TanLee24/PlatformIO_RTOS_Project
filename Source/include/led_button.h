@@ -4,7 +4,7 @@
 #include "global.h"
 #include <Arduino.h>
 
-#define SINGLE_LED_PIN GPIO_NUM_6 // D3
+#define SINGLE_LED_PIN GPIO_NUM_18 // D9
 #define LED_OFF 0
 #define LED_BLINK 1
 

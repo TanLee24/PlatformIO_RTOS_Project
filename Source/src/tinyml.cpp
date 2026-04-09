@@ -72,12 +72,12 @@ void tinyML(void *pvParameters)
         Serial.printf("Input: Temp = %.1f°C | Hum = %.1f%%\n", t, h);
 
         if (result >= 0.5) {
-            // Gần 1.0 tức là Nhãn 1 (Bất thường)
-            Serial.printf("AI OUTPUT: BẤT THƯỜNG (Confidence: %.1f%%)\n", result * 100);
+            // Close to 1.0 means Label 1 (Abnormal)
+            Serial.printf("AI OUTPUT: Abnormal (Confidence: %.1f%%)\n", result * 100);
             glob_ml_state = 1;
         } else {
-            // Gần 0.0 tức là Nhãn 0 (Bình thường)
-            Serial.printf("AI OUTPUT: BÌNH THƯỜNG (Confidence: %.1f%%)\n", (1.0 - result) * 100);
+            // Close to 0.0 means Label 0 (Normal)
+            Serial.printf("AI OUTPUT: Normal (Confidence: %.1f%%)\n", (1.0 - result) * 100);
             glob_ml_state = 0;
         }
         Serial.println("================================");
